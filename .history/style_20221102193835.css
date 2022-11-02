@@ -20,11 +20,5 @@ body {
     background: #544a7d;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #ffd452, #544a7d);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #ffd452, #544a7d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    width: 100%;
-    height: 100%;
-}
 
-.container-top {
-    background-color: whitesmoke;
-    height: 10vh;
 }
