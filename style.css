@@ -1,6 +1,7 @@
 /* root */
 :root {
     --color-grey: #f0eef1;
+    --color-blue: rgba(16, 132, 190, 0.8);
 }
 
 
@@ -16,15 +17,308 @@ body {
     height: 100%;
 }
 
+.btn {
+    cursor: pointer;
+}
+
 .container {
-    background: #544a7d;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #ffd452, #544a7d);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #ffd452, #544a7d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #544a7d;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ffd452, #544a7d);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ffd452, #544a7d);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     width: 100%;
-    height: 100%;
+    height: 100vh;
+    overflow: auto;
 }
 
 .container-top {
-    background-color: whitesmoke;
+    /* background-color: whitesmoke; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 3px solid black;
     height: 10vh;
+}
+
+.title {
+    font-size: 3rem;
+}
+
+.btn-login {
+    outline: none;
+    border: none;
+    font-size: 1.4rem;
+    border-radius: .4em;
+    padding: .5em .7em;
+    background-color: var(--color-blue);
+    color: whitesmoke;
+}
+
+.container-books {
+    margin: 3.5em auto 1em auto;
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: flex-start; */
+    /* justify-content: space-between; */
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 1.5em;
+    row-gap: 3em;
+    width: 70%;
+    /* height: 74vh; */
+    /* overflow: auto; */
+    /* border: 3px solid black; */
+}
+
+.book {
+    width: 30%;
+    background: linear-gradient(135deg, rgba(16, 132, 190, 0.8) 0%, rgba(14, 201, 89, 0.8) 100%);
+    /* background: linear-gradient(135deg, #e3e3e3 0%, #5d6874 100%); */
+    border-radius: 0.5em;
+    color: white;
+}
+
+.book-remove {
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: .5em;
+    padding-top: .5em;
+}
+
+.book-information {
+    font-size: 1.2rem;
+    padding-left: 1.5em;
+}
+
+.book-title {
+    font-size: 1.6rem;
+}
+
+.book-buttons {
+    font-size: 1.1rem;
+    padding-left: 1.5em;
+    padding-bottom: .4em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-remove-book {
+    cursor: pointer;
+}
+
+.btn-remove-book i {
+    font-size: 1.2rem;
+}
+
+.mark-read {
+    display: flex;
+    margin-right: .5em;
+    gap: .7em;
+}
+
+.add-book-container {
+    /* display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    height: 8vh; */
+    position: absolute;
+    bottom: 1em;
+    right: 1.5em;
+}
+
+.btn-add-book {
+    font-size: 2rem;
+    margin-right: 1em;
+    border-radius: 50%;
+    height: 1.6em;
+    width: 1.6em;
+    outline: none;
+    border: none;
+    color: white;
+    background-color: var(--color-blue)
+}
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    /* width: 60px;
+    height: 34px; */
+    width: 48px;
+    height: 20px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    /* bottom: 4px; */
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #2196F3;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    /* background-color: #fefefe; */
+    background-color: var(--color-blue);
+    color: white;
+    margin: auto;
+    margin-top: 4.5em;
+    /* padding: 20px; */
+    /* border: 1px solid #888; */
+    border-radius: .2em;
+    width: 20%;
+    /* height: 65vh; */
+}
+
+.container-modal {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* The Close Button */
+.close {
+    /* color: #aaaaaa; */
+    /* float: right; */
+    font-size: 1.8rem;
+    font-weight: bold;
+    padding-right: .2em;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.add-book-title {
+    font-size: 1.7rem;
+    margin: 0.5em auto;
+}
+
+.modal-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-book-info {
+    height: 100%;
+    /* background-color: goldenrod; */
+}
+
+.container-input {
+    display: flex;
+    flex-direction: column;
+    margin: .5em auto;
+    width: 80%;
+    /* background-color: darkred; */
+}
+
+.container-input>* {
+    margin: .2em 0;
+}
+
+.container-input label,
+input,
+select,
+option {
+    font-size: 1.1rem;
+}
+
+.container-input input,
+select {
+    padding-left: .3em;
+}
+
+.error-message {
+    color: black;
+    display: none;
+}
+
+.container-btn-submit {
+    padding-top: 2em;
+    padding-bottom: 1em;
+    text-align: center;
+}
+
+.btn-submit {
+    font-size: 1.3rem;
+    padding: .5em 3em;
+    border-radius: .25em;
+    border: none;
 }
