@@ -18,11 +18,14 @@ function Book(title, author, numOfPages, language, read) {
 
 }
 
-// ** Function for displaying books
+// ** Function for displaying books (copied code from CatQueenCodes/Project-Library)
 function render() {
 
   let books = document.querySelectorAll('.book');
-
+  books.forEach(book => {
+    booksContainer.removeChild(book);
+  });
+  
   for (let i = 0; i < myLibrary.length; i++) {
 
     createBookHTML(myLibrary[i]);
@@ -43,28 +46,13 @@ function render() {
 
 // }
 
-//?? Zasto se knjiga kreira duplo??
 // Create book in DOM
 function addBookToLibrary(book) {
-
-  // Set checked if book is read, when creating a book
-  // let markAsReadBtn = bookHtml.querySelector('input[type=checkbox]');
-
-  // if (book.read == "true") {
-  //   markAsReadBtn.checked = true;
-
-  // } else {
-  //   markAsReadBtn.checked = false;
-  // }
-
-  // console.log(bookHtml.innerHTML);
-
-  // booksContainer.appendChild(bookHtml); // !! Nebi trebalo bit tako, treba knjigu pushat u myLibrary
-
+  
   myLibrary.push(book);
   render();
-  //console.log(myLibrary);
-  // createBookHTML(book);
+  // console.log(myLibrary);
+ 
 }
 
 // ** Create book HTML
@@ -75,6 +63,8 @@ function createBookHTML(book) {
   // Create book in HTML
   let bookHtml = document.createElement('div');
   bookHtml.classList.add('book');
+  bookHtml.setAttribute('id', myLibrary.indexOf(book));
+
   bookHtml.innerHTML = `
   
       <div class="book-remove">
@@ -106,6 +96,18 @@ function createBookHTML(book) {
       </div>
   
     `
+
+    let bookReadBtn = bookHtml.querySelector('#mark-as-read');
+
+    if (book.read == 'true') {
+
+      bookReadBtn.checked = true;
+
+    } else {
+
+      bookReadBtn.checked = false;
+
+    }
 
   booksContainer.appendChild(bookHtml);
 
