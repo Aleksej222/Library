@@ -9,12 +9,30 @@ const closeAddNewBook = document.querySelector('.close');
 const bookForm = document.querySelector('#book-info-form');
 
 function Book(title, author, numOfPages, language, read) {
+
   // the constructor...
   this.title = title;
   this.author = author;
   this.numOfPages = numOfPages;
   this.language = language;
   this.read = read;
+
+}
+
+// !! Testiranje, probat napravit prototype funkcije na poziv druge funkcije
+// TODO: Na mark as read treba promjenit boju
+Book.prototype.markAsRead = function() {
+
+  console.log("Write function here...");
+  markBookAsRead(this);
+  
+}
+
+Book.prototype.removeFromLibrary = function() {
+  
+  //console.log(this);
+
+  myLibrary.splice(this.id, 1);
 
 }
 
@@ -34,18 +52,6 @@ function render() {
 
 }
 
-// !! Testiranje, probat napravit prototype funkcije na poziv druge funkcije
-// TODO: Na mark as read treba promjenit boju
-// Book.prototype.markAsRead = function() {
-//   console.log("Write function here...");
-// }
-
-// Book.prototype.removeFromLibrary = function() {
-//   console.log("Write function...");
-//   console.log(this);
-
-// }
-
 // Create book in DOM
 function addBookToLibrary(book) {
   
@@ -64,11 +70,12 @@ function createBookHTML(book) {
   let bookHtml = document.createElement('div');
   bookHtml.classList.add('book');
   bookHtml.setAttribute('id', myLibrary.indexOf(book));
+  book.id = bookHtml.id;
 
   bookHtml.innerHTML = `
   
       <div class="book-remove">
-        <span class="btn-remove-book" onclick="removeBook(this)">&#x2715</span>     
+        <span class="btn-remove-book">&#x2715</span>     
       </div>
 
       <div class="book-information">
@@ -97,19 +104,34 @@ function createBookHTML(book) {
   
     `
 
-    let bookReadBtn = bookHtml.querySelector('#mark-as-read');
+    // <input id="mark-as-read" type="checkbox" onchange="markBookAsRead(${book})">
 
-    if (book.read == 'true') {
+  let bookReadBtn = bookHtml.querySelector('#mark-as-read');
 
-      bookReadBtn.checked = true;
+  if (book.read == 'true') {
 
-    } else {
+    bookReadBtn.checked = true;
 
-      bookReadBtn.checked = false;
+  } else {
 
-    }
+    bookReadBtn.checked = false;
+
+  }
 
   booksContainer.appendChild(bookHtml);
+
+  let removeBookBtns = bookHtml.querySelectorAll('.btn-remove-book');
+
+  removeBookBtns.forEach(btn => {
+    
+    btn.addEventListener('click', function() {
+      
+      book.removeFromLibrary(book.id);
+      render();
+
+    })
+
+  })
 
 }
 
@@ -248,6 +270,7 @@ window.addEventListener('click', function (e) {
 // !! Aktivni bugovi:
 // TODO: Bug: kad se brise tekst sa polja i mis je izvan containera forma nestane
 // TODO: Bug: kad se klikne sa forme vrednosti polja ostanu (treba bit prazno kad se ponovo otvori)
+// TODO: Bug: kad se doda knjiga read stanje se vrati na originalno (ne sacuva sta je stavljeno kasnije)
 
 // ** Popravljeno:
 // Bug: page height, kad se doda puno knjiga, kad se skrola prema dnu pozadina je bijela
