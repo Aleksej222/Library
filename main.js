@@ -21,16 +21,20 @@ function Book(title, author, numOfPages, language, read) {
 
 // !! Testiranje, probat napravit prototype funkcije na poziv druge funkcije
 // TODO: Na mark as read treba promjenit boju
-Book.prototype.markAsRead = function() {
+Book.prototype.markAsRead = function(bookHtml) {
 
-  console.log("Write function here...");
-  markBookAsRead(this);
-  
+  // console.log(this);
+
+  this.read = !this.read;
+
+  console.log(bookHtml);
+
+
 }
 
 Book.prototype.removeFromLibrary = function() {
   
-  //console.log(this);
+  // console.log(this);
 
   myLibrary.splice(this.id, 1);
 
@@ -57,14 +61,13 @@ function addBookToLibrary(book) {
   
   myLibrary.push(book);
   render();
-  // console.log(myLibrary);
  
 }
 
 // ** Create book HTML
 function createBookHTML(book) {
 
-  console.log(book);
+  // console.log(book);
 
   // Create book in HTML
   let bookHtml = document.createElement('div');
@@ -106,18 +109,6 @@ function createBookHTML(book) {
 
     // <input id="mark-as-read" type="checkbox" onchange="markBookAsRead(${book})">
 
-  let bookReadBtn = bookHtml.querySelector('#mark-as-read');
-
-  if (book.read == 'true') {
-
-    bookReadBtn.checked = true;
-
-  } else {
-
-    bookReadBtn.checked = false;
-
-  }
-
   booksContainer.appendChild(bookHtml);
 
   let removeBookBtns = bookHtml.querySelectorAll('.btn-remove-book');
@@ -126,10 +117,19 @@ function createBookHTML(book) {
     
     btn.addEventListener('click', function() {
       
-      book.removeFromLibrary(book.id);
+      book.removeFromLibrary();
       render();
 
-    })
+    });
+
+  })
+
+  let bookReadCheck = bookHtml.querySelector('#mark-as-read');
+
+  bookReadCheck.addEventListener('change', function() {
+
+    book.markAsRead(bookHtml);
+    //render();
 
   })
 
@@ -154,8 +154,18 @@ bookForm.addEventListener('submit', function (e) {
       let fieldValue = field.value;
       let fieldName = field.name;
 
-      book[fieldName] = fieldValue;
+      if (fieldName == 'read') {
 
+        if (fieldValue == 'true') {
+          book[fieldName] = true;
+
+        } else {
+          book[fieldName] = false;
+        }
+
+      } else {
+        book[fieldName] = fieldValue;
+      }
 
     });
 
@@ -204,7 +214,7 @@ function validateForm(formData) {
 
   // Check dropdown value
   let errorFieldRead = readValue.parentNode.querySelector('.error-message');
-  if (readValue.value === 'invalid') {
+  if (readValue.value === '') {
 
     errorFieldRead.style.display = 'block';
 
@@ -213,6 +223,7 @@ function validateForm(formData) {
     errorFieldRead.style.display = 'none';
 
   }
+
 
   // Check if form has errors, then return true or false
   let errorMessage = modalWindow.querySelectorAll('.error-message[style*="display: block"]');
@@ -271,6 +282,8 @@ window.addEventListener('click', function (e) {
 // TODO: Bug: kad se brise tekst sa polja i mis je izvan containera forma nestane
 // TODO: Bug: kad se klikne sa forme vrednosti polja ostanu (treba bit prazno kad se ponovo otvori)
 // TODO: Bug: kad se doda knjiga read stanje se vrati na originalno (ne sacuva sta je stavljeno kasnije)
+// TODO: Change: kasnije zamjenit invalid sa praznim, i napravit da true false bude bool, a ne string
+// TODO: Bug: kad se doda knjiga ako se read value stavi na true, slider nije pomjeren na true
 
 // ** Popravljeno:
 // Bug: page height, kad se doda puno knjiga, kad se skrola prema dnu pozadina je bijela
