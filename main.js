@@ -1,5 +1,3 @@
-// CopyMain
-
 let myLibrary = [];
 const booksContainer = document.querySelector('.container-books');
 
@@ -28,7 +26,6 @@ Book.prototype.markAsRead = function(bookHtml) {
   this.read = !this.read;
 
   console.log(bookHtml);
-
 
 }
 
@@ -107,7 +104,9 @@ function createBookHTML(book) {
   
     `
 
-    // <input id="mark-as-read" type="checkbox" onchange="markBookAsRead(${book})">
+  let bookReadCheck = bookHtml.querySelector('#mark-as-read');
+  
+  bookReadCheck.checked = book.read;
 
   booksContainer.appendChild(bookHtml);
 
@@ -124,12 +123,9 @@ function createBookHTML(book) {
 
   })
 
-  let bookReadCheck = bookHtml.querySelector('#mark-as-read');
-
   bookReadCheck.addEventListener('change', function() {
 
     book.markAsRead(bookHtml);
-    //render();
 
   })
 
