@@ -322,3 +322,43 @@ select {
     border-radius: .25em;
     border: none;
 }
+
+/* media */
+
+/* small tablet styles */
+@media screen and (max-width: 620px) {
+    
+    .container {
+        background: #fff !important;
+    }
+   
+}
+
+/* large tablets and laptops styles */
+@media screen and (max-width: 960px) {
+
+    .container {
+        background: #fff !important;
+    }
+   
+}
+
+/* small tablet styles */
+@media screen and (max-width: 620px) {
+    
+    .container {
+        background: #fff !important;
+    }
+   
+}
+
+/* small tablet styles */
+@media screen and (max-width: 1200px) {
+    
+    .container {
+        background: #fff !important;
+    }
+   
+}
+
+/* TODO: Dodat jos media queries ako treba */

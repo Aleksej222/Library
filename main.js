@@ -19,20 +19,16 @@ function Book(title, author, numOfPages, language, read) {
 
 // !! Testiranje, probat napravit prototype funkcije na poziv druge funkcije
 // TODO: Na mark as read treba promjenit boju
-Book.prototype.markAsRead = function(bookHtml) {
+Book.prototype.markAsRead = function() {
 
   // console.log(this);
-
   this.read = !this.read;
-
-  console.log(bookHtml);
 
 }
 
 Book.prototype.removeFromLibrary = function() {
   
   // console.log(this);
-
   myLibrary.splice(this.id, 1);
 
 }
@@ -125,7 +121,7 @@ function createBookHTML(book) {
 
   bookReadCheck.addEventListener('change', function() {
 
-    book.markAsRead(bookHtml);
+    book.markAsRead();
 
   })
 
@@ -273,14 +269,15 @@ window.addEventListener('click', function (e) {
 // ?? Do proper form validation
 // ?? Do something with login button
 // ?? Add character limit (prevent too long names)
+// ?? Clear form values after submiting a book
 
 // !! Aktivni bugovi:
 // TODO: Bug: kad se brise tekst sa polja i mis je izvan containera forma nestane
 // TODO: Bug: kad se klikne sa forme vrednosti polja ostanu (treba bit prazno kad se ponovo otvori)
-// TODO: Bug: kad se doda knjiga read stanje se vrati na originalno (ne sacuva sta je stavljeno kasnije)
 // TODO: Change: kasnije zamjenit invalid sa praznim, i napravit da true false bude bool, a ne string
-// TODO: Bug: kad se doda knjiga ako se read value stavi na true, slider nije pomjeren na true
 
 // ** Popravljeno:
 // Bug: page height, kad se doda puno knjiga, kad se skrola prema dnu pozadina je bijela
 // Bug: button za dodavanje knjige ostane na sredini stranice kad se moze skrolat prema dole
+// Bug: kad se doda knjiga read stanje se vrati na originalno (ne sacuva sta je stavljeno kasnije)
+// Bug: kad se doda knjiga ako se read value stavi na true, slider nije pomjeren na true
