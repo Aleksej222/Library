@@ -325,40 +325,114 @@ select {
 
 /* media */
 
-/* small tablet styles */
-@media screen and (max-width: 620px) {
-    
-    .container {
-        background: #fff !important;
-    }
-   
-}
-
-/* large tablets and laptops styles */
-@media screen and (max-width: 960px) {
-
-    .container {
-        background: #fff !important;
-    }
-   
-}
-
-/* small tablet styles */
-@media screen and (max-width: 620px) {
-    
-    .container {
-        background: #fff !important;
-    }
-   
-}
-
-/* small tablet styles */
 @media screen and (max-width: 1200px) {
     
     .container {
         background: #fff !important;
     }
+
+    .add-book-container {
+        right: -1rem;
+    }
+
+    .modal-content {
+        width: 28%;
+    }
+
+    .container-books {
+        justify-content: center;
+        row-gap: 1rem;
+    }
+
+    .book-title {
+        font-size: 1.4rem;
+    }
+
+    .book {
+        width: 40%;
+    }
    
 }
 
-/* TODO: Dodat jos media queries ako treba */
+@media screen and (max-width: 960px) {
+
+    .container {
+        background: rgb(81, 188, 250) !important;
+    }
+
+    .modal-content {
+        width: 50%;
+    }
+
+    .book {
+        width: 80%;
+        padding: 1.5em 0;
+    }
+   
+}
+
+@media screen and (max-width: 620px) {
+    
+    .container {
+        background: rgb(172, 32, 32) !important;
+    }
+    
+    .title {
+        font-size: 2.6rem;
+    }
+
+    .btn-login {
+        font-size: 1.2rem;
+    }
+
+    .modal-content {
+        width: 80%;
+    }
+
+    .book-information {
+        font-size: 1rem;
+    }
+
+    .book-remove {
+        font-size: 1rem;
+        padding-top: 0;
+    }
+
+    .mark-read-text {
+        font-size: 1rem;
+    }
+
+    .slider:before {
+        width: 16px;
+        height: 16px;
+    }
+   
+}
+
+@media screen and (max-width: 450px) {
+
+    .container {
+        background: #fff !important;
+    }
+
+    .title {
+        font-size: 2.2rem;
+    }
+
+    .btn-login {
+        font-size: 1rem;
+    }
+
+    .add-book-container {
+        right: -1.5rem;
+    }
+
+    .book {
+        width: 100%;
+    }
+
+    .modal {
+        padding-top: 2em;
+    }
+   
+}
