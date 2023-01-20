@@ -23,39 +23,6 @@
 
             <div class="container-books">
 
-                <!-- 
-                    <div class="book">
-
-                        <div class="book-remove">
-                            <span class="btn-remove-book">&#x2715</span>
-                        </div>
-
-                        <div class="book-information">
-                            <p data-book-title="" class="book-title">Game of Thrones</p>
-                            <p data-book-author="">By: George R. R. Martin</p>
-                            <p data-book-pages="">Number of Pages: 694</p>
-                            <p data-book-language="">Language: English</p>
-                        </div>
-
-                        <div class="book-buttons">
-                            <div class="btn-remove-book">
-                                <i class="fa fa-trash-o"></i>
-                            </div>
-
-                            <div class="mark-read">
-                                <span class="mark-read-text">Mark as read:</span>
-                                <div class="mark-read-btn">
-                                    <label class="switch">
-                                        <input id="mark-as-read" type="checkbox">
-                                        <span class="slider round"></span>
-                                    </label>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div> 
-                -->
-
             </div>
 
             <div id="myModal" class="modal">
@@ -81,7 +48,7 @@
 
                                 <div class="container-input">
                                     <label for="author">Author<span aria-label="required">*</span></label>
-                                    <input data-form-field type="text" name="author" placeholder="Author" minlength="2">
+                                    <input data-form-field type="text" name="author" placeholder="Author" minlength="2" maxlength="20">
                                     <span class="error-message"><span aria-label="required">*</span> Book author is
                                         required</span>
                                 </div>
@@ -97,7 +64,7 @@
                                 <div class="container-input">
                                     <label for="language">Language<span aria-label="required">*</span></label>
                                     <input data-form-field type="text" name="language" placeholder="Language"
-                                        minlength="2">
+                                        minlength="2" maxlength="20">
                                     <span class="error-message"><span aria-label="required">*</span> Book language is
                                         required</span>
                                 </div>

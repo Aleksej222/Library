@@ -22,12 +22,13 @@ body {
 }
 
 .container {
-    background: #544a7d;
+    /* background: #544a7d; */
     /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #ffd452, #544a7d);
+    /* background: -webkit-linear-gradient(to right, #ffd452, #544a7d); */
     /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #ffd452, #544a7d);
+    /* background: linear-gradient(to right, #ffd452, #544a7d); */
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-color: #fff;
     width: 100%;
     height: 100vh;
     overflow: auto;
@@ -324,12 +325,7 @@ select {
 }
 
 /* media */
-
 @media screen and (max-width: 1200px) {
-    
-    .container {
-        background: #fff !important;
-    }
 
     .add-book-container {
         right: -1rem;
@@ -356,10 +352,6 @@ select {
 
 @media screen and (max-width: 960px) {
 
-    .container {
-        background: rgb(81, 188, 250) !important;
-    }
-
     .modal-content {
         width: 50%;
     }
@@ -372,10 +364,6 @@ select {
 }
 
 @media screen and (max-width: 620px) {
-    
-    .container {
-        background: rgb(172, 32, 32) !important;
-    }
     
     .title {
         font-size: 2.6rem;
@@ -410,10 +398,6 @@ select {
 }
 
 @media screen and (max-width: 450px) {
-
-    .container {
-        background: #fff !important;
-    }
 
     .title {
         font-size: 2.2rem;

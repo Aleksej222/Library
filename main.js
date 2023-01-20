@@ -17,8 +17,6 @@ function Book(title, author, numOfPages, language, read) {
 
 }
 
-// !! Testiranje, probat napravit prototype funkcije na poziv druge funkcije
-// TODO: Na mark as read treba promjenit boju
 Book.prototype.markAsRead = function() {
 
   // console.log(this);
@@ -33,7 +31,7 @@ Book.prototype.removeFromLibrary = function() {
 
 }
 
-// ** Function for displaying books (copied code from CatQueenCodes/Project-Library)
+// ** Function for displaying books (copied some code from CatQueenCodes/Project-Library)
 function render() {
 
   let books = document.querySelectorAll('.book');
@@ -49,7 +47,7 @@ function render() {
 
 }
 
-// Create book in DOM
+// ** Create book in DOM
 function addBookToLibrary(book) {
   
   myLibrary.push(book);
@@ -245,6 +243,7 @@ closeAddNewBook.addEventListener('click', function () {
 });
 
 // !! Probat dodat onmouseup/down, i malo neke izmjene (zbog buga)
+// ** Close modal window when clicking outside of window
 window.addEventListener('click', function (e) {
 
   let containerModal = modalWindow.querySelector('.container-modal');
@@ -261,20 +260,16 @@ window.addEventListener('click', function (e) {
 });
 
 
-// ?? Delete book on x click and on icon click
 // ?? Change color of book when marked as read
-// ?? Close the modal window (look how others did it)
-// ** Show errors when invalid input, adjust modal window height
-// ?? Display new book
+// ?? Close the modal window (has bug)
 // ?? Do proper form validation
 // ?? Do something with login button
-// ?? Add character limit (prevent too long names)
 // ?? Clear form values after submiting a book
+// ?? Add transitions when removing books (so it looks nice)
 
 // !! Aktivni bugovi:
 // TODO: Bug: kad se brise tekst sa polja i mis je izvan containera forma nestane
 // TODO: Bug: kad se klikne sa forme vrednosti polja ostanu (treba bit prazno kad se ponovo otvori)
-// TODO: Change: kasnije zamjenit invalid sa praznim, i napravit da true false bude bool, a ne string
 
 // ** Popravljeno:
 // Bug: page height, kad se doda puno knjiga, kad se skrola prema dnu pozadina je bijela
