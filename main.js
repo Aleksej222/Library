@@ -6,30 +6,52 @@ const modalWindow = document.querySelector('.modal');
 const closeAddNewBook = document.querySelector('.close');
 const bookForm = document.querySelector('#book-info-form');
 
-function Book(title, author, numOfPages, language, read) {
+class Book {
 
-  // the constructor...
-  this.title = title;
-  this.author = author;
-  this.numOfPages = numOfPages;
-  this.language = language;
-  this.read = read;
+  constructor(title, author, numOfPages, language, read) {
+
+    this.title = title;
+    this.author = author;
+    this.numOfPages = numOfPages;
+    this.language = language;
+    this.read = read;
+
+  }
+
+  markAsRead() {
+    this.read = !this.read;
+  }
+
+  removeFromLibrary() {
+    myLibrary.splice(this.id, 1);
+  }
 
 }
 
-Book.prototype.markAsRead = function() {
+// function Book(title, author, numOfPages, language, read) {
 
-  // console.log(this);
-  this.read = !this.read;
+//   // the constructor...
+//   this.title = title;
+//   this.author = author;
+//   this.numOfPages = numOfPages;
+//   this.language = language;
+//   this.read = read;
 
-}
+// }
 
-Book.prototype.removeFromLibrary = function() {
+// Book.prototype.markAsRead = function() {
+
+//   // console.log(this);
+//   this.read = !this.read;
+
+// }
+
+// Book.prototype.removeFromLibrary = function() {
   
-  // console.log(this);
-  myLibrary.splice(this.id, 1);
+//   // console.log(this);
+//   myLibrary.splice(this.id, 1);
 
-}
+// }
 
 // ** Function for displaying books (copied some code from CatQueenCodes/Project-Library)
 function render() {
@@ -276,3 +298,7 @@ window.addEventListener('click', function (e) {
 // Bug: button za dodavanje knjige ostane na sredini stranice kad se moze skrolat prema dole
 // Bug: kad se doda knjiga read stanje se vrati na originalno (ne sacuva sta je stavljeno kasnije)
 // Bug: kad se doda knjiga ako se read value stavi na true, slider nije pomjeren na true
+
+// !! Validacija forme mora bit bolja
+// !! markAsRead, toggleRead (markAsRead misleading name)
+// !! id treba bit dodan na pocetku (u konstruktoru)
